@@ -27,7 +27,7 @@
         <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
     </div>
 </div>
-
+ 
 <form action ="/meow" method="post">
   <fieldset>
     <legend>Asking questions!</legend>
