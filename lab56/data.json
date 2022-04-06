@@ -1,0 +1,10 @@
+{
+    "example@mail.ru": [
+        "Do you need to study?",
+        "Can i see your smile?",
+        "This_is_not_question_ERROR_code(a.55)"
+    ],
+    "user@customdomain.net": [
+        "Hello! How can i use your website?"
+    ]
+}

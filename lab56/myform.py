@@ -1,5 +1,6 @@
 from bottle import post, request
 import re
+import json
 
 @post('/meow', method='post')
 def my_form():
@@ -7,6 +8,8 @@ def my_form():
 
     mail = request.forms.get('ADDRESS')
     question = request.forms.get('QUESTION')
+
+    saveDataInJson(mail, question)
 
     pattern = r'(\w+)@([A-Z0-9]+)\.([A-Z]{2,4})'  
     correctMail = re.match(pattern, mail, flags=re.IGNORECASE)
@@ -24,3 +27,23 @@ def check_mob():
         return "NotFine"
     else:
         return "Fine"
+
+def saveDataInJson(mail, text):
+    data = {}
+    try:
+        with open('data.json') as json_file:
+            data = json.load(json_file)
+            print('Email: ' + data[mail])
+            parsed_mail = data[mail]
+    except:
+        print("mem")
+
+    if(mail in data):
+        data[mail].append(text)
+    else:
+        data[mail] = [text]
+
+    with open('data.json', 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+
+    print(data)
